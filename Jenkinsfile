@@ -36,7 +36,7 @@ pipeline {
                                     makeEmptyDirs: false,
                                     noDefaultExcludes: false,
                                     patternSeparator: '[, ]+',
-                                    remoteDirectory: '//opt//deploy',
+                                    remoteDirectory: '//opt//cicd-deployment',
                                     remoteDirectorySDF: false,
                                     removePrefix: 'target',
                                     sourceFiles: 'target/*.jar'
@@ -61,7 +61,7 @@ pipeline {
                                     cleanRemote: false,
                                     excludes: '',
                                     execCommand: '''
-                                        cd /opt/deploy/
+                                        cd /opt/cicd-deployment/
                                         ansible-playbook start_container.yml
                                     ''',
                                     execTimeout: 120000,
