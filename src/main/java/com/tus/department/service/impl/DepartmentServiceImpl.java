@@ -1,11 +1,10 @@
+
 package com.tus.department.service.impl;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.tus.department.dto.DepartmentDto;
@@ -17,8 +16,11 @@ import com.tus.department.service.DepartmentService;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
-	@Autowired
 	private DepartmentRepository departmentRepository;
+	
+	public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
+		this.departmentRepository = departmentRepository;
+	}
 
 	@Override
 	public DepartmentEntity saveDepartment(DepartmentDto departmentDto) {
@@ -26,14 +28,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 		depEntity.setDepartmentName(departmentDto.getDepartmentName());
 		depEntity.setDepartmentAddress(departmentDto.getDepartmentAddress());
 		depEntity.setDepartmentCode(departmentDto.getDepartmentCode());
-		DepartmentEntity registeredInfo = departmentRepository.save(depEntity);
-		return registeredInfo;
+		return departmentRepository.save(depEntity);
 	}
 
 	@Override
 	public List<DepartmentEntity> fetchAllDepartments() {
-		List<DepartmentEntity> listofDepartment = departmentRepository.findAll();
-		return listofDepartment;
+		return  departmentRepository.findAll();
 	}
 
 	@Override
@@ -48,7 +48,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public String deleteDeptById(Long departmentId) {
-		DepartmentEntity deptInfo = departmentRepository.findById(departmentId).get();
 		departmentRepository.deleteById(departmentId);
 		return "Deleted the data successfully !!";
 	}
@@ -70,9 +69,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 				&& !"".equalsIgnoreCase(departmentDto.getDepartmentCode())) {
 			deptInfo.setDepartmentCode(departmentDto.getDepartmentCode());
 		}
-
-		DepartmentEntity updatedInfo = departmentRepository.save(deptInfo);
-		return updatedInfo;
+		return departmentRepository.save(deptInfo);
 	}
 
 	@Override
