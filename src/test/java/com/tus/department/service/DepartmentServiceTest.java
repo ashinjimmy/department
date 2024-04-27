@@ -3,7 +3,6 @@ package com.tus.department.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,7 +14,7 @@ import com.tus.department.entity.DepartmentEntity;
 import com.tus.department.repository.DepartmentRepository;
 
 @SpringBootTest
-public class DepartmentServiceTest {
+ class DepartmentServiceTest {
 
 	@Autowired
 	private DepartmentService departmentService;
@@ -35,8 +34,7 @@ public class DepartmentServiceTest {
 
 	@Test
 	@DisplayName("Get Data based on valid Department Name")
-	//@Disabled --> Annotation for skipping the test
-	public void whenValidDepartmentName_thenDepartmentShouldFound() {
+	 void whenValidDepartmentName_thenDepartmentShouldFound() {
 		String departmentName = "CS";
 		DepartmentEntity foundDept = departmentService.findDepartmentByName(departmentName);
 		assertEquals(departmentName, foundDept.getDepartmentName());
