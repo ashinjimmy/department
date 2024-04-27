@@ -11,7 +11,7 @@ public interface DepartmentService {
 
 	public List<DepartmentEntity> fetchAllDepartments();
 
-	public DepartmentEntity findDepartmentById(Long departmentId) ;
+	public DepartmentEntity findDepartmentById(Long departmentId)  ;
 
 	public String deleteDeptById(Long departmentId);
 
