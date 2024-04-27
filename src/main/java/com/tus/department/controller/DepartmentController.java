@@ -1,14 +1,11 @@
 package com.tus.department.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +31,7 @@ public class DepartmentController {
 	private final static Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
 	@PostMapping("/departments")
-	public ResponseEntity saveDepartment(@RequestBody DepartmentDto departmentDto) {
+	public ResponseEntity<DepartmentEntity> saveDepartment(@RequestBody DepartmentDto departmentDto) {
 		DepartmentEntity registeredInfo = departmentService.saveDepartment(departmentDto);
 		LOGGER.info("Inside the saveDepartment of DepartmentService !!");
 		return ResponseEntity.status(HttpStatus.CREATED).body(registeredInfo);
@@ -52,12 +49,12 @@ public class DepartmentController {
 	}
 
 	@DeleteMapping("/departments/{id}")
-	public ResponseEntity deleteDeptById(@PathVariable("id") Long departmentId) {
+	public ResponseEntity<String> deleteDeptById(@PathVariable("id") Long departmentId) {
 		return ResponseEntity.status(HttpStatus.OK).body(departmentService.deleteDeptById(departmentId));
 	}
 
 	@PutMapping("/departments/{id}")
-	public ResponseEntity updateDeptById(@PathVariable("id") Long departmentId,
+	public ResponseEntity<DepartmentEntity> updateDeptById(@PathVariable("id") Long departmentId,
 			@RequestBody DepartmentDto departmentDto) {
 		return ResponseEntity.status(HttpStatus.OK).body(departmentService.updateDeptById(departmentId, departmentDto));
 	}
