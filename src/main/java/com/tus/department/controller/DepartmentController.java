@@ -44,8 +44,9 @@ public class DepartmentController {
 		return departmentService.fetchAllDepartments();
 	}
 
+	
 	@GetMapping("/departments/{id}")
-	public ResponseEntity<DepartmentEntity> findDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
+	public ResponseEntity<DepartmentEntity> findDepartmentById(@PathVariable("id") Long departmentId)  {
 		return ResponseEntity.status(HttpStatus.OK).body(departmentService.findDepartmentById(departmentId));
 	}
 
