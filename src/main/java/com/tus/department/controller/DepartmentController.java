@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tus.department.dto.DepartmentDto;
 import com.tus.department.entity.DepartmentEntity;
-import com.tus.department.exceptions.DepartmentNotFoundException;
 import com.tus.department.service.DepartmentService;
 
 @RestController
