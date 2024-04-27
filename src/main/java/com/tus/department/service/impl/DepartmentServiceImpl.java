@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.tus.department.dto.DepartmentDto;
 import com.tus.department.entity.DepartmentEntity;
-import com.tus.department.exceptions.DepartmentNotFoundException;
 import com.tus.department.repository.DepartmentRepository;
 import com.tus.department.service.DepartmentService;
 
@@ -39,7 +38,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public DepartmentEntity findDepartmentById(Long departmentId)  {
 		Optional<DepartmentEntity> deptInfo = departmentRepository.findById(departmentId);
-		return deptInfo.get();
+		if(deptInfo.isPresent()) {
+			return deptInfo.get();
+		}
+		return new DepartmentEntity();
 	}
 
 	@Override
