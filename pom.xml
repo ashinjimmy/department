@@ -15,7 +15,17 @@
 	<name>department</name>
 	<description>Spring Boot Project for Department</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
+		<sonar.coverage.exclusions>
+			**/entity/**/*,
+			**/dto/*,
+			**/errors/*,
+			**/exceptions/*,
+			**/scheduler/*,
+			**DepartmentApplication.java
+		</sonar.coverage.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
