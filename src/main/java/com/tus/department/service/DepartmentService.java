@@ -2,11 +2,8 @@ package com.tus.department.service;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-
 import com.tus.department.dto.DepartmentDto;
 import com.tus.department.entity.DepartmentEntity;
-import com.tus.department.exceptions.DepartmentNotFoundException;
 
 public interface DepartmentService {
 
@@ -14,7 +11,7 @@ public interface DepartmentService {
 
 	public List<DepartmentEntity> fetchAllDepartments();
 
-	public DepartmentEntity findDepartmentById(Long departmentId) throws DepartmentNotFoundException;
+	public DepartmentEntity findDepartmentById(Long departmentId) ;
 
 	public String deleteDeptById(Long departmentId);
 
