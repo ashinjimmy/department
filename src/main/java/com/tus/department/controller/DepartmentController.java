@@ -61,8 +61,8 @@ public class DepartmentController {
 		return ResponseEntity.status(HttpStatus.OK).body(departmentService.updateDeptById(departmentId, departmentDto));
 	}
 	
-	@GetMapping("/departments/name/{name}")
-	public ResponseEntity<DepartmentEntity> findDepartmentByName(@PathVariable("name") String name) throws DepartmentNotFoundException {
+		@GetMapping("/departments/name/{name}")
+	public ResponseEntity<DepartmentEntity> findDepartmentByName(@PathVariable("name") String name)  {
 		return ResponseEntity.status(HttpStatus.OK).body(departmentService.findDepartmentByName(name));
 	}
 	
