@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,10 +24,13 @@ import com.tus.department.service.DepartmentService;
 @RequestMapping("/api")
 public class DepartmentController {
 
-	@Autowired
 	private DepartmentService departmentService;
 	
-	private final static Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+	public DepartmentController(DepartmentService departmentService) {
+		this.departmentService = departmentService;
+	}
+
+	private static final  Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
 	@PostMapping("/departments")
 	public ResponseEntity<DepartmentEntity> saveDepartment(@RequestBody DepartmentDto departmentDto) {
@@ -39,8 +41,7 @@ public class DepartmentController {
 
 	@GetMapping("/departments")
 	public List<DepartmentEntity> fetchAllDepartment() {
-		List<DepartmentEntity> list = departmentService.fetchAllDepartments();
-		return list;
+		return departmentService.fetchAllDepartments();
 	}
 
 	@GetMapping("/departments/{id}")
