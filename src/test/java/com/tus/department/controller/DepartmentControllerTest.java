@@ -18,7 +18,7 @@ import com.tus.department.entity.DepartmentEntity;
 import com.tus.department.service.DepartmentService;
 
 @WebMvcTest(DepartmentController.class)
-public class DepartmentControllerTest {
+ class DepartmentControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
